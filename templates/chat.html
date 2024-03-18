@@ -1,0 +1,52 @@
+<!-- templates/chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="../static/styles.css"> <!-- Assuming the CSS file is located in the 'static' folder -->
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <div>
+            <p class="message">Note: Ask a question to invoke the function that handles both automation and regular inquiries, similar to how ChatGPT operates.</p>
+            <p class="message">To see the list of all functions, please send a request with the following command:</p>
+            <p class="message">list_all_functions</p>
+            <p class="message">After that, you can select the comma-separated functions to call the desired function, as each function performs its own specific task. You just need to send that function alone.</p>
+            <input type="text" id="user-input" placeholder="Ask a question...">
+            <button onclick="sendQuestion()" id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendQuestion() {
+            const userInput = document.getElementById('user-input').value;
+            const chatBox = document.getElementById('chat-box');
+
+            // Display user's question in the chat box
+            chatBox.innerHTML += `<p>User: ${userInput}</p>`;
+
+            // Make a request to the backend to get the AI's response
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `user_input=${userInput}`,
+            })
+            .then(response => response.json())
+            .then(data => {
+                const answer = data.answer;
+                // Display AI's answer in the chat box
+                chatBox.innerHTML += `<p>AI: ${answer}</p>`;
+            })
+            .catch(error => console.error('Error:', error));
+
+            // Clear the input field
+            document.getElementById('user-input').value = '';
+        }
+    </script>
+</body>
+</html>
