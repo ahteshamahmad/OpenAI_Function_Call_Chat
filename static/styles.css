@@ -2,7 +2,15 @@
 #chat-container {
     width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0px;
+}
+
+#GPT-content p{
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-size: 20px;
+
 }
 
 #chat-container p {
@@ -44,6 +52,7 @@
 .message {
     margin-bottom: 0 !important;
     font-weight: bold;
+    color:green;
 }
 
 .user {

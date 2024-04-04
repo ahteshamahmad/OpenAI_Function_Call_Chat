@@ -8,13 +8,21 @@
     <link rel="stylesheet" href="../static/styles.css"> <!-- Assuming the CSS file is located in the 'static' folder -->
 </head>
 <body>
+    <div id="GPT-content">
+    <p>Welcome to new custom ChatGPT-3.5</p>
+    </div>
     <div id="chat-container">
         <div id="chat-box"></div>
         <div>
-            <p class="message">Note: Ask a question to invoke the function that handles both automation and regular inquiries, similar to how ChatGPT operates.</p>
-            <p class="message">To see the list of all functions, please send a request with the following command:</p>
-            <p class="message">list_all_functions</p>
-            <p class="message">After that, you can select the comma-separated functions to call the desired function, as each function performs its own specific task. You just need to send that function alone.</p>
+            <p class="message">
+                Note: Ask a question to invoke the function that handles both automation and regular inquiries, similar to how ChatGPT operates.
+                <br>
+                To see the list of all functions, please send a request with the following command:
+                <br>
+                list_all_functions
+                <br>
+                After that, you can select the comma-separated functions to call the desired function, as each function performs its own specific task. You just need to send that function alone.
+            </p>
             <input type="text" id="user-input" placeholder="Ask a question...">
             <button onclick="sendQuestion()" id="send-btn">Send</button>
         </div>
